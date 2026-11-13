@@ -36,6 +36,16 @@ Selain sewa reguler (*post-paid*), program mendukung sewa paket berbasis **token
 
 ## 2. Build dan Menjalankan
 
+Dengan `make`:
+
+```bash
+make       # build the app
+./warnet   # run program
+make clean # clean workspace
+```
+
+Tanpa `make`:
+
 ```bash
 gcc -O2 -Iinclude src/*.c -o warnet
 ```
