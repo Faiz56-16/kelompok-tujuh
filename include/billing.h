@@ -7,5 +7,5 @@
 long hitung_biaya_postpaid(long detik);
 void selesai_sesi(komputer *k, int otomatis);   /* cetak struk + kosongkan PC */
 void cek_sesi(void);                            /* peringatan 3 menit & auto-lock */
-
+// void stop_sewa(void);                          /* hentikan sesi post-paid */
 #endif

@@ -18,11 +18,9 @@ void tampil_menu(void) {
     printf("        Tarif reguler: %s/jam\n", tarif);
     printf("==============================================\n");
     printf("  1. Lihat Status komputer (Billing Monitor)\n");
-    printf("  2. Sewa komputer (Post-Paid / Reguler)\n");
-    printf("  3. Selesai / Cetak Struk (Stop Billing)\n");
-    printf("  4. Buat Token Paket (Kasir, Pre-Paid)\n");
-    printf("  5. Login dengan Token (Pre-Paid)\n");
-    printf("  6. Lihat Token Aktif\n");
+    printf("  2. Daftar Token (Kasir, Pre-Paid)\n");
+    printf("  3. Login degnan Token(Pre-Paid)\n");
+    printf("  4. Lihat Token Aktif\n");
     printf("  0. Keluar\n");
     printf("----------------------------------------------\n");
 }

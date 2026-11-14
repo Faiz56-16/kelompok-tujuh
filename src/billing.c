@@ -97,3 +97,13 @@ void cek_sesi(void) {
     }
     if (berubah) simpan_data();
 }
+
+// void stop_sewa(void) {
+//     int idx = pilih_unit(1);
+//     if (idx < 0) {
+//         printf("  Tidak ada unit yang dipilih.\n");
+//         return;
+//     }
+//     selesai_sesi(&pc[idx], 0);
+//     simpan_data();
+// }

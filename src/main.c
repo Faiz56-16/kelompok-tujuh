@@ -1,9 +1,4 @@
-/*
- * Program Rental Warnet Berbasis Console (Bahasa C)
- * Berdasarkan dokumentasi: https://github.com/Faiz56-16/sistem-login-c
- *
- * main.c hanya berisi inisialisasi dan loop menu; logika ada di modul lain.
- */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -13,7 +8,6 @@
 #include "storage.h"
 #include "billing.h"
 #include "ui.h"
-#include "rental.h"
 #include "token.h"
 
 int main(void) {
@@ -28,17 +22,15 @@ int main(void) {
     do {
         cek_sesi();
         tampil_menu();
-        pilihan = baca_int("Pilih menu [0-6]: ", 0, 6);
+        pilihan = baca_int("Pilih menu [0-5]: ", 0, 5);
         if (input_habis()) break;
         cek_sesi();   /* waktu bisa habis saat menunggu input */
 
         switch (pilihan) {
             case 1: tampil_status(); tekan_enter(); break;
-            case 2: sewa_postpaid(); tekan_enter(); break;
-            case 3: stop_sewa();     tekan_enter(); break;
-            case 4: buat_token();    tekan_enter(); break;
-            case 5: login_token();   tekan_enter(); break;
-            case 6: lihat_token();   tekan_enter(); break;
+            case 2: buat_token();    tekan_enter(); break;
+            case 3: login_token();   tekan_enter(); break;
+            case 4: lihat_token();   tekan_enter(); break;
             case 0: break;
         }
     } while (pilihan != 0);
