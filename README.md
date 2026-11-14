@@ -25,7 +25,6 @@ Selain sewa reguler (*post-paid*), program mendukung sewa paket berbasis **token
 ## 1. Fitur
 
 - **5 unit komputer** (`PC-01` sampai `PC-05`) dengan status `KOSONG` atau `TERPAKAI`.
-- **Post-Paid (Reguler)**: billing per menit, tarif Rp5.000/jam, total dihitung saat sewa dihentikan.
 - **Pre-Paid (Token)**: kasir membuat token dari paket, pelanggan login memakai token, timer berjalan mundur.
 - **Peringatan 3 menit terakhir** dan **kunci otomatis** (disertai struk) saat paket habis.
 - **Struk tagihan** untuk kedua mode.
@@ -69,7 +68,6 @@ warnet/
 │   ├── storage.h   Simpan/muat sesi
 │   ├── billing.h   Biaya, struk, stop sesi, auto-lock
 │   ├── ui.h        Menu, tabel status, pilih unit, input nama
-│   ├── rental.h    Sewa post-paid dan stop sewa
 │   └── token.h     Buat/login/lihat token pre-paid
 └── src/
     ├── main.c      Inisialisasi dan loop menu
@@ -78,7 +76,6 @@ warnet/
     ├── storage.c
     ├── billing.c
     ├── ui.c
-    ├── rental.c
     └── token.c
 ```
 
@@ -106,19 +103,15 @@ state, util ──> (tidak bergantung ke modul lain)
    - Di setiap putaran, `cek_sesi()` dipanggil **sebelum menu ditampilkan** dan **sekali lagi setelah pilihan dibaca** (waktu bisa habis saat program menunggu input).
    - Menampilkan opsi menu:
      1. Lihat Status Komputer (Billing Monitor)
-     2. Sewa Komputer (Post-Paid / Reguler)
-     3. Selesai / Cetak Struk (Stop Billing)
-     4. Buat Token Paket (Kasir, Pre-Paid)
-     5. Login dengan Token (Pre-Paid)
-     6. Lihat Token Aktif
+     2. Buat Token Paket (Kasir, Pre-Paid)
+     3. Login dengan Token (Pre-Paid)
+     4. Lihat Token Aktif
      0. Keluar
 3. **Pemuatan Modul berdasarkan Input User**:
    - **Menu 1 (Status)**: Menampilkan tabel seluruh unit komputer beserta status, nama penyewa, mode, lama pemakaian, dan sisa waktu (pre-paid) atau estimasi biaya (post-paid).
-   - **Menu 2 (Mulai Sewa)**: Memvalidasi pilihan unit PC yang masih `KOSONG`, meminta nama pelanggan, lalu menyimpan timestamp waktu mulai (`time(NULL)`) dengan mode post-paid.
-   - **Menu 3 (Stop Sewa)**: Memvalidasi unit PC yang sedang `TERPAKAI`, mencatat timestamp waktu selesai, menghitung durasi sewa, dan mencetak struk tagihan. Berlaku untuk post-paid maupun pre-paid.
-   - **Menu 4 (Buat Token)**: Memilih paket, program membuat kode token unik, kasir menerima pembayaran sesuai harga paket.
-   - **Menu 5 (Login Token)**: Memvalidasi token (ada dan belum dipakai), memilih unit `KOSONG`, meminta nama, lalu memulai timer mundur sesuai durasi paket.
-   - **Menu 6 (Lihat Token)**: Menampilkan token yang belum dipakai beserta paket dan harganya.
+   - **Menu 2 (Buat Token)**: Memilih paket, program membuat kode token unik, kasir menerima pembayaran sesuai harga paket.
+   - **Menu 3 (Login Token)**: Memvalidasi token (ada dan belum dipakai), memilih unit `KOSONG`, meminta nama, lalu memulai timer mundur sesuai durasi paket.
+   - **Menu 4 (Lihat Token)**: Menampilkan token yang belum dipakai beserta paket dan harganya.
    - **Menu 0 (Keluar)**: Menghentikan perulangan; data disimpan terlebih dahulu.
 4. **Setiap perubahan data** (mulai sewa, stop sewa, buat token, login token, kunci otomatis) langsung diikuti `simpan_data()`.
 
