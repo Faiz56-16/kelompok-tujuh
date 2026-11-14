@@ -36,6 +36,8 @@ Selain sewa reguler (*post-paid*), program mendukung sewa paket berbasis **token
 
 ## 2. Build dan Menjalankan
 
+#### `Pastikan Sudah Menginstall Compiler C seperti gcc / clang, dan Makefile ( Optional )`
+
 Dengan `make`:
 
 ```bash
